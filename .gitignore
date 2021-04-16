@@ -1,3 +1,6 @@
+# Folder with Rosalind input
+data/
+
 # History files
 .Rhistory
 .Rapp.history
