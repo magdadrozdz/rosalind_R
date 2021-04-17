@@ -5,9 +5,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 dna_string <- read_file(args[1])
 
-dna_string <- read_file('./data/rosalind_revc.txt')
-
-# sample_dataset 
+# sample_data
 # dna_string <- 'AAAACCCGGT'
 
 rev_complement <- dna_string %>%
