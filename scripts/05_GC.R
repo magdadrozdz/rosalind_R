@@ -16,7 +16,7 @@ top_count <- alphabetFrequency(dna_string, baseOnly=T, collapse=F) %>%
   top_n(1) %>% 
   select(row_id, GC_content)
 
-result <- paste0(names(dna_string[top_count$row_id,]), '\n', top_count$GC_content)
+result <- paste0(names(dna_string[top_count$row_id,]), top_count$GC_content, sep ='\n')
 
 cat(result)
 
