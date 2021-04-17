@@ -1,4 +1,5 @@
 library(tidyverse)
+library(here)
 args = commandArgs(trailingOnly=TRUE)
 
 dna_string <- read_file(args[1])
@@ -12,4 +13,4 @@ dna_count <- dna_string %>%
 
 print(dna_count)
 
-write_file(dna_count, './output/01_DNA.txt')
+write_file(dna_count, here('output', '01_DNA.txt'))
