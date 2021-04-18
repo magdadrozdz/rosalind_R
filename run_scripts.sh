@@ -9,3 +9,5 @@ Rscript ./scripts/04_IPRB.R ./input/rosalind_iprb.txt
 Rscript ./scripts/05_GC.R ./input/rosalind_gc.txt
 
 Rscript ./scripts/06_HAMM.R ./input/rosalind_hamm.txt
+
+Rscript ./scripts/07_PROT.R ./input/rosalind_prot.txt
