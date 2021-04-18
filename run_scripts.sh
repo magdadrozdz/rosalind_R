@@ -11,3 +11,6 @@ Rscript ./scripts/05_GC.R ./input/rosalind_gc.txt
 Rscript ./scripts/06_HAMM.R ./input/rosalind_hamm.txt
 
 Rscript ./scripts/07_PROT.R ./input/rosalind_prot.txt
+
+Rscript ./scripts/08_SUBS.R ./input/rosalind_subs.txt
+
