@@ -13,18 +13,18 @@
 # ATACA
 
 # Sample Output
-# AC
+# CA
 
 suppressMessages(library(tidyverse))
 suppressMessages(library(here))
 suppressMessages(library(Biostrings))
-library(stringi)
+suppressMessages(library(stringi))
 args = commandArgs(trailingOnly=TRUE) 
 
-Any <- function(x, f=function(z) z) {
-  for (i in x) if (f(i)) return(TRUE)
-  return(FALSE)
-}
+Any <- function(x, sf) {
+  if (sum(!is.na(str_locate(sf, x))) > 1){TRUE}
+  else FALSE}
+
 lcs <- function(data) {
   min_str <- data[which.min(sapply(data, nchar))]
   min_len <- nchar(min_str)
@@ -37,32 +37,30 @@ lcs <- function(data) {
     
     for (j in (1+ofs):(min_len - i + 1)) {
       search_for <- substr(min_str, j, j+i-1)
-      if (Any(bl, function(x) !is.na(str_locate(search_for, x)[1,1]))) next
+
+      if (Any(bl, search_for)) next
       
       abort <- FALSE
       for (k in data) {
         if (is.na(str_locate(k, search_for)[1,1])) {
+          bl <- cbind(bl, search_for)
           abort <- TRUE
-          break
-        }
-      }
+          break}
+          }
       
-      if (abort) {
-        bl <- cbind(bl, search_for)
-      } else {
-        ofs <- j-1 # No bigger string was found before this offset
-        result <- search_for
-        break
-      }
+      if (abort) next
+      ofs <- j-1 # No bigger string was found before this offset
+      result <- search_for
+      break
     }
     
     if (!is.null(last_result) && last_result == result) break
   }
-  
   result
 }
 
-
-dna_string <- readDNAStringSet(args[1]) %>% as.character()
+dna_strings <- readDNAStringSet(args[1]) %>% as.character()
+sink(here('output', '09_LCSM.txt'))
 cat(lcs(dna_strings))
+sink()
 
