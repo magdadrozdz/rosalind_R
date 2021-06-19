@@ -30,6 +30,7 @@ for (l in 1:length(string_list)){
   
   # extract one list
   split_list <- str_split(string_list[[l]][2:length(string_list[[l]])], '')
+  split_list <- split_list[lapply(split_list, length)>0] #remove bits with NAs
   
   # extract the sequences
   seqs <- c()
