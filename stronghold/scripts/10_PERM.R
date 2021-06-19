@@ -1,6 +1,5 @@
 library(gtools)
 library(here)
-library(tidyverse)
 
 args = commandArgs(trailingOnly=TRUE) 
 n = scan(args[1])
